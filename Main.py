@@ -1,7 +1,3 @@
-"""
-http://pmaweb.caltech.edu/~physlab/lab_22_current/Ph22_4_Nbody_2.pdf
-"""
-
 import os
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 

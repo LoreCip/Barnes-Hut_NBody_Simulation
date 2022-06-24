@@ -24,12 +24,13 @@ def check_Event_Logic(run, show_tree, tree, SURF):
     """
     Handels the button pressed:
         - quit button
-        - s        : show/hide tree
+        - t        : show/hide tree
         - SpaceBar : pause/unpause
      """
+    from Particle import DrawAllParticles
+    
     for event in pg.event.get():
-            if event.type == pg.QUIT:
-                run = False
+            if event.type == pg.QUIT: run = False
             if event.type == pg.KEYDOWN:
                 # Show Tree
                 if event.key == ord ("t"): show_tree = not show_tree 

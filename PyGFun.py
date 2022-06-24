@@ -39,7 +39,7 @@ def check_Event_Logic(run, show_tree, tree, SURF):
                         event = pg.event.wait()
                         if event.type == pg.KEYDOWN and event.key == pg.K_SPACE: break #Exit infinite loop
                         # Show/hide tree during pause
-                        if event.type == pg.KEYDOWN and event.key == ord ("s"): 
+                        if event.type == pg.KEYDOWN and event.key == ord ("t"): 
                             show_tree = not show_tree
                             SURF.fill((0, 0, 26, 1))
                             if show_tree: tree.draw(SURF)

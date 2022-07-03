@@ -1,4 +1,5 @@
 import os
+import sys
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "hide"
 
 import pygame as pg
@@ -26,16 +27,25 @@ def Load(path):
 if __name__ == '__main__':
     
     inp = input('Insert 1 to execute a new simulation, 2 to load a previous one: ')
-    if inp == str(1):
-        N_0 = int(input('Insert the number of particles: '))
-        load = False
-    elif inp == str(2):
-        load = True
-    else:
-        print('Abort.')
-        import sys
-        sys.exit()
     
+    try:
+        inp = int(inp)
+    except ValueError:
+        print('Please, inster a number (1 or 2).')
+        sys.exit(1)
+    except Exception:
+        print('Something went wrong!')
+        sys.exit(1)
+    else:
+        if inp == 1:
+            N_0 = int(input('Insert the number of particles: '))
+            load = False
+        elif inp == 2:
+            load = True
+        else:
+            print('Please, instert 1 or 2.')
+            sys.exit(1)
+
     list_of_savefile = []
     list_of_gif      = []
     if load:
@@ -56,8 +66,7 @@ if __name__ == '__main__':
             old_tree = Load(path)
         else:
             print('File not found. Abort.')
-            import sys
-            sys.exit()
+            sys.exit(1)
     
     svFIN = input('Save final state? (Y/N) ')
     FIN = False
@@ -67,8 +76,7 @@ if __name__ == '__main__':
         FIN = False
     else:
         print('Abort.')
-        import sys
-        sys.exit()
+        sys.exit(1)
         
     svGIF = input('Generate GIF? (Y/N) ')
     
@@ -78,8 +86,7 @@ if __name__ == '__main__':
         GIF = False
     else:
         print('Abort.')
-        import sys
-        sys.exit()
+        sys.exit(1)
             
     if not load:    
         print(f'Computing initial conditions for {N_0} particles')
@@ -106,8 +113,8 @@ if __name__ == '__main__':
     
     
 #####################################################################################################
-    ###          SAVE
-    #####################################################################################################
+###          SAVE
+#####################################################################################################
     
     if FIN:
         name = f'savefile_N{tree.N_0}_'
